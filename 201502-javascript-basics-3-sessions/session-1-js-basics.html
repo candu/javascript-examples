@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Mocha Tests</title>
+<title>JS Basics</title>
 <link rel="stylesheet" href="mocha.css" />
 <script src="chai.js"></script>
 <script src="mocha.js"></script>
@@ -21,12 +21,16 @@ function improvedGreeting(first, last) {
     // TODO: implement this
 }
 
+function sum(numbers) {
+    // TODO: implement this
+}
+
 </script>
 </head>
 <body>
     <div id="mocha"></div>
     <script>
-    
+
 // This is testing code.  You shouldn't *need* to change this - but if you want
 // to add more tests, go ahead!
 
@@ -67,6 +71,18 @@ describe("improvedGreeting()", function() {
     it("works for Joe Schmoe", function() {
         expect(improvedGreeting("Joe", "Schmoe")).to.equal(
             greeting("Joe", "Schmoe"));
+    });
+});
+
+describe("sum()", function() {
+    it("works for empty arrays", function() {
+        expect(sum([])).to.equal(0);
+    });
+    it("works for single-element arrays", function() {
+        expect(sum([42])).to.equal(42);
+    });
+    it("works for multi-element arrays", function() {
+        expect(sum([1, 2, 3, 4, 5])).to.equal(15);
     });
 });
 
