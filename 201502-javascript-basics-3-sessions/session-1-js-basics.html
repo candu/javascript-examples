@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mocha Tests</title>
+<link rel="stylesheet" href="mocha.css" />
+<script src="chai.js"></script>
+<script src="mocha.js"></script>
+<script>
+// You'll be writing these functions during the session.
+
+function humanReadableDate(d) {
+  // TODO: implement this
+}
+
+function greeting(first, last) {
+  return "Hello, " + first + " " + last + "!";
+}
+
+function improvedGreeting(first, last) {
+  // TODO: implement this
+}
+
+</script>
+</head>
+<body>
+  <div id="mocha"></div>
+  <script>
+// This is testing code.  You shouldn't *need* to change this - but if you want
+// to add more tests, go ahead!
+
+mocha.ui("bdd");
+mocha.reporter("html");
+window.expect = chai.expect;
+
+describe("humanReadableDate()", function() {
+  it("displays the correct month", function() {
+    expect(humanReadableDate(new Date(2000, 1, 2))).to.equal("2/2/2000");
+  });
+  it("displays month-day-year in proper order", function() {
+    expect(humanReadableDate(new Date(2000, 0, 31))).to.equal("1/31/2000");
+  });
+  it("works for dates in the distant past or future", function() {
+    expect(humanReadableDate(new Date(654, 3, 21))).to.equal("4/21/654");
+    expect(humanReadableDate(new Date(54321, 6, 17))).to.equal("7/17/54321");
+  });
+});
+
+describe("improvedGreeting()", function() {
+  var ANCA_GREETING = "Welcome to TechLiminal!";
+  var VADER_GREETING = "This is not the coworking space you're looking for.";
+  it("works for Anca Mosoiu", function() {
+    expect(improvedGreeting("Anca", "Mosoiu")).to.equal(ANCA_GREETING);
+    expect(improvedGreeting("Anca", "Banca")).to.equal(
+      greeting("Anca", "Banca"));
+    expect(improvedGreeting("Lord", "Mosoiu")).to.equal(
+      greeting("Lord", "Mosoiu"));
+  });
+  it("works for Darth Vader", function() {
+    expect(improvedGreeting("Darth", "Vader")).to.equal(VADER_GREETING);
+    expect(improvedGreeting("Darth", "Maul")).to.equal(
+      greeting("Darth", "Maul"));
+    expect(improvedGreeting("Lord", "Vader")).to.equal(
+      greeting("Lord", "Vader"));
+  });
+  it("works for Joe Schmoe", function() {
+    expect(improvedGreeting("Joe", "Schmoe")).to.equal(
+      greeting("Joe", "Schmoe"));
+  });
+});
+
+mocha.run();
+  </script>
+</body>
+</html>
