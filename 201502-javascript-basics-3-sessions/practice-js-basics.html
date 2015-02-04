@@ -10,7 +10,7 @@
 // You'll be writing these functions during the session.
 
 function humanReadableDate(d) {
-    // TODO: implement this
+    throw new Error('not implemented yet');
 }
 
 function greeting(first, last) {
@@ -18,11 +18,11 @@ function greeting(first, last) {
 }
 
 function improvedGreeting(first, last) {
-    // TODO: implement this
+    throw new Error('not implemented yet');
 }
 
 function sum(numbers) {
-    // TODO: implement this
+    throw new Error('not implemented yet');
 }
 
 </script>
@@ -83,6 +83,9 @@ describe("sum()", function() {
     });
     it("works for multi-element arrays", function() {
         expect(sum([1, 2, 3, 4, 5])).to.equal(15);
+    });
+    it("works for negative numbers", function() {
+        expect(sum([-1, 2, -3, 4, -5])).to.equal(-3);
     });
 });
 
