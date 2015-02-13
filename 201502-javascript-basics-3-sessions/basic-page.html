@@ -37,13 +37,12 @@ html, body {
 </div>
 <script>
 // Your JavaScript goes here.
-var pageLoadedAt = new Date();
+var counter = 0;
 var timeCounter = document.getElementById('time_on_page_seconds');
 
 function updateCounter() {
-    var millisecondsOnPage = new Date() - pageLoadedAt;
-    var secondsOnPage = Math.floor(millisecondsOnPage / 1000);
-    timeCounter.innerHTML = secondsOnPage;
+    counter = counter + 1;
+    timeCounter.innerHTML = counter;
 }
 
 window.setInterval(updateCounter, 1000);
