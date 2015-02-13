@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <title>HTML5 Photoset</title>
 
-<script src="https://code.jquery.com/jquery-2.1.3.js"></script>
-
 <style>
 html, body {
     padding: 0;
@@ -58,30 +56,26 @@ html, body {
     </div>
 </div>
 <script>
-var $slides = $('.slide');
+var slides = document.getElementsByClassName('slide');
+var slideCounter = document.getElementById('slide_active_counter');
 var active = 0;
 
-function getActiveSlide() {
-    var activeSlide = $slides.get(active);
-    return $(activeSlide);
-}
-
 function clearActiveSlide() {
-    var $activeSlide = getActiveSlide();
-    $activeSlide.removeClass('active');
+    var activeSlide = slides[active];
+    activeSlide.classList.remove('active');
 }
 
 function updateActiveSlide() {
-    $activeSlide = getActiveSlide();
-    $activeSlide.addClass('active');
-    $('#slide_active_counter').text('Active Slide: ' + active);
+    var activeSlide = slides[active];
+    activeSlide.classList.add('active');
+    slideCounter.innerHTML = 'Active Slide: ' + active;
 }
 
 function prev() {
     clearActiveSlide();
     active = active - 1;
     if (active < 0) {
-        active = $slides.size() - 1;
+        active = slides.length - 1;
     }
     updateActiveSlide();
 }
@@ -89,7 +83,7 @@ function prev() {
 function next() {
     clearActiveSlide();
     active = active + 1;
-    if (active >= $slides.size()) {
+    if (active >= slides.length) {
         active = 0;
     }
     updateActiveSlide();
@@ -107,7 +101,7 @@ function onKeyDown(evt) {
     }
 }
 
-$(document).keydown(onKeyDown);
+document.addEventListener('keydown', onKeyDown);
 </script>
 </body>
 </html>
